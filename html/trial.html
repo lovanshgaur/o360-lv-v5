@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Dino Game</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #game {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background-color: #fff;
+            border: 2px solid #000;
+            overflow: hidden;
+        }
+
+        .virtual-wall {
+            position: absolute;
+            left: 100%;
+            width: 50px;
+            height: 50px;
+            bottom: 0;
+            background: linear-gradient(to bottom, #00ffcc, #0099cc);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.8);
+            opacity: 0.8;
+            transform: rotate(10deg);
+        }
+
+        .virtual-wall.glitch {
+            animation: glitch 0.3s linear infinite;
+        }
+
+        @keyframes moveWall {
+            0% {
+                left: 100%;
+            }
+
+            100% {
+                left: -50px;
+            }
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translateX(0) scaleY(1);
+            }
+
+            20% {
+                transform: translateX(-10px) scaleY(1.2);
+            }
+
+            40% {
+                transform: translateX(10px) scaleY(0.8);
+            }
+
+            60% {
+                transform: translateX(-5px) scaleY(1.1);
+            }
+
+            80% {
+                transform: translateX(5px) scaleY(0.9);
+            }
+
+            100% {
+                transform: translateX(0) scaleY(1);
+            }
+        }
+
+        #dino {
+            position: absolute;
+            left: 20px;
+            bottom: 0;
+            font-size: 50px;
+            color: black;
+            transition: color 0.3s ease;
+        }
+
+        .power-up {
+            position: absolute;
+            top: 20%;
+            right: -100px;
+            width: 40px;
+            height: 40px;
+            background-color: gold;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        .pause-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            color: red;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game">
+        <div id="dino">
+            <i class="fa-solid fa-vr-cardboard"></i>
+        </div>
+    </div>
+
+    <script>
+        const dino = document.getElementById('dino');
+        const game = document.getElementById('game');
+        let isJumping = false;
+        let gravity = 0.9;
+        let isGameOver = false;
+        let isPaused = false;
+        let level = 1;
+        let powerUpCaught = false;
+        let position = 0;
+        let wallInterval, powerUpInterval;
+
+        // Key controls for jumping and pausing
+        function control(e) {
+            if (e.keyCode === 32) { // Spacebar for jump
+                if (!isJumping) {
+                    isJumping = true;
+                    jump();
+                }
+            }
+            if (e.keyCode === 27) { // Escape for pause
+                togglePause();
+            }
+        }
+
+        document.addEventListener('keydown', control);
+
+        function jump() {
+            let count = 0;
+            let timerId = setInterval(function () {
+                if (count === 15) {
+                    clearInterval(timerId);
+                    let downTimerId = setInterval(function () {
+                        if (count === 0) {
+                            clearInterval(downTimerId);
+                            isJumping = false;
+                        }
+                        position -= 5;
+                        count--;
+                        position = position * gravity;
+                        dino.style.bottom = position + 'px';
+                    }, 20);
+                }
+                position += 30;
+                count++;
+                position = position * gravity;
+                dino.style.bottom = position + 'px';
+            }, 20);
+        }
+
+        function generateVirtualWalls() {
+            let minTime = 2000;
+            let maxTime = 4000;
+            let randomTime = Math.random() * (maxTime - minTime) + minTime;
+            let virtualWallPosition = 800;
+            const virtualWall = document.createElement('div');
+            virtualWall.classList.add('virtual-wall');
+            if (level === 2) virtualWall.classList.add('glitch'); // Glitch effect at level 2
+            game.appendChild(virtualWall);
+            virtualWall.style.left = virtualWallPosition + 'px';
+
+            let timerId = setInterval(function () {
+                if (virtualWallPosition > 0 && virtualWallPosition < 60 && position < 30) {
+                    clearInterval(timerId);
+                    isGameOver = true;
+                    while (game.firstChild) {
+                        game.removeChild(game.lastChild);
+                    }
+                    showRestartButton();
+                }
+                virtualWallPosition -= 10;
+                virtualWall.style.left = virtualWallPosition + 'px';
+            }, 20);
+
+            if (!isGameOver && !isPaused) wallInterval = setTimeout(generateVirtualWalls, randomTime);
+        }
+
+        function generatePowerUp() {
+            const powerUp = document.createElement('div');
+            powerUp.classList.add('power-up');
+            game.appendChild(powerUp);
+            let powerUpPosition = 800;
+
+            let powerUpTimer = setInterval(function () {
+                if (powerUpPosition > 0 && powerUpPosition < 60 && position < 30) {
+                    clearInterval(powerUpTimer);
+                    powerUpCaught = true;
+                    dino.style.color = 'red'; // Change color when power-up is caught
+                    game.removeChild(powerUp); // Remove power-up after collection
+                }
+                powerUpPosition -= 10;
+                powerUp.style.left = powerUpPosition + 'px';
+            }, 20);
+
+            if (!isPaused) powerUpInterval = setTimeout(generatePowerUp, Math.random() * 5000 + 3000); // New power-up every few seconds
+        }
+
+        function togglePause() {
+            if (isPaused) {
+                isPaused = false;
+                generateVirtualWalls();
+                generatePowerUp();
+            } else {
+                isPaused = true;
+                clearTimeout(wallInterval);
+                clearTimeout(powerUpInterval);
+                const pauseOverlay = document.createElement('div');
+                pauseOverlay.classList.add('pause-screen');
+                pauseOverlay.textContent = "Game Paused. Press Esc to Resume";
+                game.appendChild(pauseOverlay);
+            }
+        }
+
+        function showRestartButton() {
+            const restartButton = document.createElement('button');
+            restartButton.innerText = 'Restart';
+            restartButton.style.position = 'absolute';
+            restartButton.style.top = '50%';
+            restartButton.style.left = '50%';
+            restartButton.style.transform = 'translate(-50%, -50%)';
+            restartButton.style.padding = '10px 20px';
+            restartButton.style.fontSize = '16px';
+            game.appendChild(restartButton);
+
+            restartButton.addEventListener('click', function () {
+                location.reload();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.keyCode === 13) location.reload(); // Restart with Enter key
+            });
+        }
+
+        generateVirtualWalls();
+        generatePowerUp();
+    </script>
+</body>
+
+</html>

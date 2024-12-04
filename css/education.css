@@ -1,0 +1,238 @@
+header video {
+    width: 120%;
+    transform: translateX(-10%);
+}
+
+.header-overlay {
+    z-index: 10;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+}
+
+.header-text {
+    z-index: 110;
+}
+
+.service-about-profile video {
+    border-radius: 1rem;
+}
+
+.school-container {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.school-services-content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.school-service-name {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    padding: 0rem 2rem;
+    background: var(--background);
+    box-shadow: 2px 2px 4px inset;
+    border-radius: 0.5rem;
+    transform: scale(0.8);
+    transition: all 0.5s ease-in-out;
+}
+
+.school-service-text h1 {
+    text-transform: capitalize;
+    font-size: 2rem;
+}
+
+.school-service-profile {
+    width: 30%;
+    height: 100%;
+    box-shadow: 2px 2px 4px inset var(--background);
+    transition: all 0.5s ease-in-out;
+    background: url("../img/vr-classroom.jpg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
+.active {
+    color: var(--background);
+    background: var(--accent);
+    transform: scale(1);
+    background-size: 100% 100%;
+}
+
+
+
+/* Two Slides Section */
+
+.slides-container {
+    width: 80%;
+    height: 80vh;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide {
+    width: 50%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+}
+
+#slide-left {
+    background:
+        url(../img/man.png) no-repeat 100% 100%,
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),
+        url(../img/bg_man.png) no-repeat right / cover;
+}
+
+
+#slide-right {
+    background: url(../img/woman.png) no-repeat 100% 100%,
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),
+        left / cover url(../img/bg_woman.png) no-repeat;
+}
+
+.slide-on {
+    width: 60%;
+}
+
+.slide-off {
+    width: 40%;
+}
+
+.slide-content {
+    width: 80%;
+    height: 50%;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
+
+.slide-content h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px black;
+}
+
+.slide-content button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    position: relative;
+    background: transparent;
+    color: aliceblue;
+}
+
+.slide-content button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 10%;
+    height: 100%;
+    border-radius: 0.25rem;
+    transition: all 0.5s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.214);
+}
+
+.slide-on button::before {
+    width: 100%;
+}
+
+
+
+/* Responsive CSS  */
+@media (max-width: 768px) {
+    .header-text {
+        width: 95%;
+    }
+
+    #school-service-profile {
+        display: none;
+    }
+
+    .school-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .school-services-content {
+        width: 100%;
+        gap: 0;
+    }
+
+    .school-service-text {
+        width: 80%;
+        position: absolute;
+        bottom: 2.5%;
+        left: 0%;
+        padding: 0.5rem 1rem;
+    }
+
+    .school-service-name:nth-child(2) .school-service-text {
+        left: auto;
+        right: 0%;
+        text-align: right;
+    }
+
+    .active {
+        box-shadow: none;
+        border-radius: none;
+        color: var(--text);
+        position: relative;
+    }
+
+    .active::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+
+    .slides-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        flex-direction: column;
+    }
+
+    .slide {
+        width: 100%;
+        height: 50%;
+    }
+
+    #slide-left {
+        background:
+            url(../img/man.png) no-repeat bottom right / 350px 250px,
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),
+            url(../img/bg_man.png) no-repeat right / cover;
+    }
+
+    #slide-right {
+        background:
+            url(../img/woman.png) no-repeat bottom left / 350px 250px,
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),
+            url(../img/bg_woman.png) no-repeat left / cover;
+    }
+
+
+}

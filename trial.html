@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.0.6/dist/locomotive-scroll.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Electrolize";
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: #a19a8f;
+        }
+
+        .container {
+            height: 100%;
+            width: 100vw;
+            display: flex;
+            overflow: hidden;
+        }
+
+        section {
+            width: 120vw;
+            font-size: 6em;
+            line-height: 1em;
+            background: #a19a8f;
+        }
+
+        .wrap {
+            display: flex;
+            height: 100%;
+        }
+
+        .service-section {
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            left: -200px;
+        }
+
+        .service-panels {
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .service-panel {
+            position: absolute;
+            top: 0%;
+            left: 0;
+            width: 4rem;
+            height: 100%;
+            background: #a19a8f;
+            z-index: 100;
+            padding: 2rem 1.25rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none;
+            cursor: pointer;
+            border-left: 0.2em solid #000;
+            font-weight: 500;
+        }
+
+        .service-panel[data-service-section="2"].init {
+            left: calc(100vw - 16rem);
+        }
+
+        .service-panel[data-service-section="2"].fixed {
+            left: 4rem;
+            border-left: 0.2em solid #000;
+        }
+
+        .service-panel[data-service-section="3"].init {
+            left: calc(100vw - 12rem);
+        }
+
+        .service-panel[data-service-section="3"].fixed {
+            left: 8rem;
+        }
+
+        .service-panel[data-service-section="4"].init {
+            left: calc(100vw - 8rem);
+        }
+
+        .service-panel[data-service-section="4"].fixed {
+            left: 12rem;
+        }
+
+        .service-panel[data-service-section="5"].init {
+            left: calc(100vw - 4rem);
+        }
+
+        .service-panel[data-service-section="5"].fixed {
+            left: 16rem;
+        }
+
+        .service-panel__title {
+            position: relative;
+            white-space: nowrap;
+            transform: rotate(-90deg) translate(-50%);
+            text-align: right;
+        }
+
+        .service-panel__title,
+        .service-panel__number {
+            text-transform: uppercase;
+            font-size: 2em;
+            line-height: 1rem;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="service-panels">
+
+        <div class="service-panel init" data-service-section="1" data-href="overview">
+            <div class="service-panel__title">Overview</div>
+            <div class="service-panel__number">1</div>
+        </div>
+
+        <div class="service-panel init" data-service-section="2" data-href="design">
+            <div class="service-panel__title">Design</div>
+            <div class="service-panel__number">2</div>
+        </div>
+
+        <div class="service-panel init" data-service-section="3" data-href="development">
+            <div class="service-panel__title">Development</div>
+            <div class="service-panel__number">3</div>
+        </div>
+
+        <div class="service-panel init" data-service-section="4" data-href="marketing">
+            <div class="service-panel__title">Marketing</div>
+            <div class="service-panel__number">4</div>
+        </div>
+
+        <div class="service-panel init" data-service-section="5" data-href="support">
+            <div class="service-panel__title">Support</div>
+            <div class="service-panel__number">5</div>
+        </div>
+
+    </div>
+
+    <div class="container" data-scroll-container>
+        <div class="wrap" data-scroll-section>
+
+            <section class="service-section overview" data-service-section="1" id="overview">
+                Overview Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br> industry.
+            </section>
+
+            <section class="service-section design" data-service-section="2" id="design">
+                Design Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br> industry.
+            </section>
+
+            <section class="service-section development" data-service-section="3" id="development">
+                Development Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br> industry.
+            </section>
+
+            <section class="service-section marketing" data-service-section="4" id="marketing">
+                Marketing Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br> industry.
+            </section>
+
+            <section class="service-section support" data-service-section="5" id="support">
+                Support Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br> industry.
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true,
+            direction: "horizontal",
+        });
+
+        let panels = document.querySelectorAll(".service-panel[data-service-section]");
+
+        // Scroll Event Listener
+        scroll.on("scroll", () => {
+            panels.forEach((panel) => {
+                let attr = panel.getAttribute("data-service-section");
+                let section = document.querySelector(`section[data-service-section="${attr}"]`);
+
+                if (section) {
+                    let sectionLeft = section.getBoundingClientRect().left;
+
+                    // For the Overview panel (always fixed)
+                    if (attr === "1") {
+                        panel.classList.add("fixed");
+                        panel.style.left = "0"; // Always fixed at the left
+                    } else {
+                        // Other panels logic
+                        if (sectionLeft <= panel.offsetWidth * attr) {
+                            panel.classList.add("fixed");
+                            panel.classList.remove("init");
+                            panel.style.left = `${(attr - 1) * panel.offsetWidth}px`;
+                        } else {
+                            panel.classList.add("init");
+                            panel.classList.remove("fixed");
+                            panel.style.left = `calc(100vw - ${4 * (6 - attr)}rem)`; // Reset to initial position
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

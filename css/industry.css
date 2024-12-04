@@ -1,0 +1,117 @@
+
+.industry-services{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    margin: auto;
+}
+.industry-service{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.industry-box{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.industry-icon{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    z-index: 20;
+    background-color: var(--background);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s ease-in;
+    font-size: 2rem;
+    color: azure;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.industry-icon i{
+    z-index: 200;
+}
+.industry-icon::after{
+    content: "";
+    width: 0%;
+    height: 0%;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--accent);
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.industry-icon:hover{
+    border: 0px solid transparent;
+    color: black;
+}
+.industry-icon:hover i{
+    transform: scale(1.5);
+}
+
+
+.industry-icon:hover::after{
+    width: 120%;
+    height: 120%;
+}
+.service-detail{
+    width: 75%;
+    max-height: 100%;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    border: .1rem solid rgba(255, 255, 255, .1);
+    border-top: .1rem solid rgba(255, 255, 255, .3);
+    border-left: .1rem solid rgba(255, 255, 255, .3);
+    opacity: 0.75;
+    transition: all 0.5s ease-in-out;
+    scale: 0;
+}
+.service-detail h1{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+.service-detail p{
+    font-size: 1rem;
+    text-align: justify;
+}
+.industry-service:hover .service-detail{
+    opacity: 1;
+    scale: 1;
+}
+
+.industry-service:nth-child(1),.industry-service:nth-child(3){
+    margin-left: 37.5%;
+}
+
+.connect{
+    width: 4px;
+    height: 37%;
+    background-color: var(--accent);
+    position: absolute;
+    top: 90%;
+    left: 12.5%;
+    z-index: 10;
+}
+.industry-service:nth-child(2) .connect{
+    left: 87.5%;
+}
+.industry-service:nth-child(3) .connect{
+    width: 0%;
+}

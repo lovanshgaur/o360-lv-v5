@@ -1,0 +1,162 @@
+
+/* Other Service Page Common CSS */
+header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+header img,
+header video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+}
+
+.header-text {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 60%;
+  height: 60%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-text h1 {
+  font-size: 3rem;
+  text-shadow: 1px 1px 2px var(--background);
+}
+
+.header-text p {
+  text-shadow: 1px 1px 2px var(--background);
+  font-size: 1.5rem;
+}
+
+.service-btn {
+  background: var(--accent);
+  padding: 1rem 2rem;
+  border: none;
+  outline: none;
+  margin: 1rem 0rem;
+  position: relative;
+  box-shadow: inset 1px 1px 2px var(--background);
+  font-weight: 500;
+  font-size: 1.25rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.service-btn:hover {
+  box-shadow: inset 1px 1px 2px var(--background);
+}
+
+.service-btn::after {
+  content: "";
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  top: 10%;
+  left: -10%;
+}
+
+.service-btn:hover::after {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  box-shadow: 1px 1px 2px var(--color);
+  background-color: var(--background);
+}
+
+/* ---------Service About--------- */
+
+.service-about {
+  width: 100%;
+  height: 100vh;
+}
+
+.service-about-content {
+  width: 80%;
+  height: 80%;
+  position: relative;
+}
+
+.service-about-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  /* background: linear-gradient(transparent, #230e09d6); */
+}
+
+.service-about-text {
+  position: absolute;
+  bottom: 0%;
+  padding: 1rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.service-about-text h1 {
+  font-size: 2.5rem;
+}
+
+.service-about-profile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.service-about-profile>img,
+video {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  object-fit: cover;
+
+}
+
+@media (max-width: 768px) {
+  .service-about {
+    height: 50vh;
+  }
+
+  .service-about-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .service-about-profile video {
+    object-fit: cover;
+    object-position: right;
+    width: 120%;
+
+  }
+
+  .service-about-text {
+    width: 95%;
+    bottom: 0;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, 0%);
+  }
+}
+
+

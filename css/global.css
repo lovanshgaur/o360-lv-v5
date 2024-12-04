@@ -1,0 +1,332 @@
+/* ----------Universal Components---------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Matemasie&family=Outfit:wght@100..900&display=swap");
+
+:root {
+  /* --background: #0b0b15; */
+  --background: #020202;
+  --color: snow;
+  --accent: #b3ffab;
+  --theme: #ae41d2;
+  --jakarta: "Plus Jakarta Sans", sans-serif;
+  --mersad: "Mersad", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--mersad);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+p {
+  font-family: "Outfit", sans-serif;
+}
+.point {
+  font-family: "Outfit", sans-serif;
+}
+*::selection {
+  background: var(--accent);
+  color: black;
+  text-shadow: none;
+}
+::-webkit-scrollbar {
+  width: 10%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+.highlight {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin: 1rem 0rem;
+  padding: 1rem 3rem;
+}
+
+body {
+   background: var(--background); 
+  color: var(--color);
+  height: 100%;
+}
+#containerVr{
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  z-index: 1000;
+  position: fixed;
+  bottom: -150px;
+  right: -150px;
+  background: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.content{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  pointer-events: none;
+}
+.content .circle3d{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: -100%;
+  left: 0%;
+  background: floralwhite;
+  transition: all 0.5s ease-in-out;
+}
+#containerVr:hover .content .circle3d{
+  top: 0%;
+}
+
+/* ----------------Transition sectionStarts Here---------------- */
+
+
+.transition {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  z-index: 1000000;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  scale: 2.5;
+  transform: rotate(45deg);
+}
+
+.transition-row {
+  flex: 1;
+  display: flex;
+}
+.transition-row.row-1 .block {
+  transform-origin: top;
+}
+.transition-row.row-2 .block {
+  transform-origin: bottom;
+}
+.transition-row.row-1 .block:nth-child(odd){
+    background-color: var(--theme);
+}
+.transition-row.row-2 .block:nth-child(even){
+    background-color: var(--theme);
+}
+
+.block {
+  flex: 1;
+  background-color: var(--accent);
+  transform: scaleY(1);
+  will-change: transform;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+}
+
+.section-heading{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  padding: 0.5rem 0rem;
+  text-shadow: 1px 1px 2px var(--accent);
+}
+
+/* ----------------Nav sectionStarts Here---------------- */
+nav {
+  width: 100%;
+  height: 10vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  z-index: 1000;
+  transition: all 0.1s ease-in-out;
+}
+
+#logo {
+  padding: 1rem;
+  height: 100%;
+  z-index: 10000;
+}
+
+#navbar {
+  width: 40%;
+  height: 100%;
+  position: relative;
+}
+.nav-icon {
+  width: 5vh;
+  height: 50%;
+  position: absolute;
+  top: 25%;
+  right: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  gap: 10px;
+  z-index: 10000;
+}
+.nav-icon .bar {
+  width: 45px;
+  height: 3px;
+  background: var(--color);
+  transition: all 0.5s ease-in-out;
+}
+
+.close-icon .bar {
+  background: var(--accent);
+}
+.close-icon .bar:nth-child(1) {
+  transform: translate(10px, 15px) rotate(45deg);
+}
+.close-icon .bar:nth-child(2) {
+  transform: translateX(30px);
+  opacity: 0;
+}
+.close-icon .bar:nth-child(3) {
+  transform: translate(10px, -15px) rotate(-45deg);
+}
+
+.sidebar {
+  width: max-content;
+  height: 100vh;
+  position: absolute;
+  top: 0%;
+  right: -100vw;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.link-container {
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: "Mersad";
+  font-weight: 900;
+  width: 30vw;
+  height: 100vh;
+}
+.sidebar a {
+  font-size: 3rem;
+  line-height: 1;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 1px 1px 4px #e21020;
+}
+.sidebar a:hover {
+  color: var(--accent);
+}
+.sidebar a:hover::before {
+  content: "\2192";
+  padding: 0rem 1rem;
+}
+
+.closed-nav {
+  right: 0vw;
+}
+
+/* ----------------Nav sectionEnds Here---------------- */
+
+/* ----------------Main sectionStarts Here---------------- */
+
+main {
+  width: 100%;
+}
+section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----------------Main sectionEnds Here---------------- */
+
+/* ----------------Footer sectionStarts Here---------------- */
+footer {
+  width: 100%;
+  background-image: url("../img/footer-theme.png");
+  background-size: 100% 100%;
+  padding: 2rem;
+  color: aliceblue;
+}
+
+footer .container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .container .left {
+  width: 50%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer .container .left #logo img {
+  width: 5rem;
+}
+footer .container .left div {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer .container .left #contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer .container .left #contact p {
+  margin-bottom: 0.5rem;
+}
+footer .container .footer-details {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footer-details .column {
+  line-height: 2;
+}
+.footer-details .column a {
+  text-decoration: none;
+  color: aliceblue;
+}
+.footer-details .column #details-heading {
+  font-weight: bold;
+}
+
+/* ----------------Footer sectionEnds Here---------------- */

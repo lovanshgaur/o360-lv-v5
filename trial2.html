@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --bg: #272626;
+            --s1: #cccccc;
+            --s2: #d9534f;
+            --s3: #5bc0de;
+            --s4: #343a40;
+            --s5: #0275d8;
+            --s6: #d9534f;
+            --s7: #f0ad4e;
+            --s8: #5cb85c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map {
+            width: 20%;
+            height: 100%;
+            position: fixed;
+            margin: 50px 0px;
+            padding: 0px 20px;
+        }
+
+        .sections {
+            width: 80%;
+            height: 100%;
+            position: absolute;
+            left: 20%;
+            padding: 30px 20px 0 0;
+        }
+
+        .map>div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1.5px solid black;
+            border-radius: 20px;
+            transition: all 0.5s;
+        }
+
+        .sections>div {
+            width: 100%;
+            margin: 20px 0px 80px 0px;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px 25px;
+            border: 1.5px solid black;
+            border-radius: 40px;
+            font-size: 1rem;
+        }
+
+        .map>div p:nth-child(1) {
+            font-size: 1rem;
+        }
+
+        .map>div p:nth-child(2) {
+            font-size: 1.5rem;
+        }
+
+        .copy {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            border: 1.5px solid black;
+            border-radius: 20px;
+        }
+
+        .copy h1 {
+            font-weight: 300;
+            font-size: 3rem;
+        }
+
+        .section1 {
+            height: 500px;
+        }
+
+        .section2 {
+            height: 800px;
+        }
+
+        .section3 {
+            height: 600px;
+        }
+
+        .section4 {
+            height: 900px;
+        }
+
+        .section5 {
+            height: 800px;
+        }
+
+        .section6 {
+            height: 400px;
+        }
+
+        .section7 {
+            height: 600px;
+        }
+
+        .section8 {
+            height: 800px;
+        }
+
+        .whitespace {
+            width: 100%;
+            height: 100px;
+            border: none !important;
+        }
+
+        .s-1,
+        .section1 .header,
+        .section1 .copy {
+            background-color: var(--s1);
+        }
+
+        .s-2,
+        .section2 .header,
+        .section2 .copy {
+            background-color: var(--s2);
+            color: #fff;
+        }
+
+        .s-3,
+        .section3 .header,
+        .section3 .copy {
+            background-color: var(--s3);
+            color: #fff;
+        }
+
+        .s-4,
+        .section4 .header,
+        .section4 .copy {
+            background-color: var(--s4);
+            color: #fff;
+        }
+
+        .s-5,
+        .section5 .header,
+        .section5 .copy {
+            background-color: var(--s5);
+            color: #fff;
+        }
+
+        .s-6,
+        .section6 .header,
+        .section6 .copy {
+            background-color: var(--s6);
+            color: #fff;
+        }
+
+        .s-7,
+        .section7 .header,
+        .section7 .copy {
+            background-color: var(--s7);
+        }
+
+        .s-8,
+        .section8 .header,
+        .section8 .copy {
+            background-color: var(--s8);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="map">
+
+            <div class="s-1">
+                <p>01</p>
+                <p>Raw Materials</p>
+            </div>
+
+
+            <div class="s-2">
+                <p>02</p>
+                <p>Hello</p>
+            </div>
+
+            <div class="s-3">
+                <p>03</p>
+                <p>Approach</p>
+            </div>
+
+            <div class="s-4">
+                <p>04</p>
+                <p>Work</p>
+            </div>
+
+            <div class="s-5">
+                <p>05</p>
+                <p>Talent</p>
+            </div>
+
+            <div class="s-6">
+                <p>06</p>
+                <p>Careers</p>
+            </div>
+
+            <div class="s-7">
+                <p>07</p>
+                <p>Contact</p>
+            </div>
+
+            <div class="s-8">
+                <p>08</p>
+                <p>Unusual Index</p>
+            </div>
+
+        </div>
+
+        <div class="sections">
+
+            <div class="section1 sec">
+                <div class="header">
+                    <p>01</p>
+                    <p>Raw Materials</p>
+                </div>
+                <div class="copy">
+                    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti repudiandae provident ad?
+                        Ipsam hic quaera</h1>
+                </div>
+            </div>
+
+            <div class="section2 sec">
+                <div class="header">
+                    <p>02</p>
+                    <p>Hello</p>
+                </div>
+                <div class="copy">
+                    <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed
+                        cursus ante dapibus diam.</h1>
+                    <br><br>
+                </div>
+            </div>
+
+            <div class="section3 sec">
+                <div class="header">
+                    <p>03</p>
+                    <p>Approach</p>
+                </div>
+                <div class="copy">
+                    <h1>Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h1>
+                </div>
+            </div>
+
+            <div class="section4 sec">
+                <div class="header">
+                    <p>04</p>
+                    <p>Work</p>
+                </div>
+                <div class="copy">
+                    <h1>Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</h1>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <h1>A Warm invitation to a world where imagination is the only limit and the ordinary is
+                        extraordinary</h1>
+                </div>
+            </div>
+
+            <div class="section5 sec">
+                <div class="header">
+                    <p>05</p>
+                    <p>Talent</p>
+                </div>
+                <div class="copy">
+                    <h1>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</h1>
+                    <br><br>
+                </div>
+            </div>
+
+            <div class="section6 sec">
+                <div class="header">
+                    <p>06</p>
+                    <p>Careers</p>
+                </div>
+                <div class="copy">
+                    <h1>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.</h1>
+                </div>
+            </div>
+
+            <div class="section7 sec">
+                <div class="header">
+                    <p>07</p>
+                    <p>Contact</p>
+                </div>
+                <div class="copy">
+                    <h1>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan
+                        tincidunt.</h1>
+                </div>
+            </div>
+
+            <div class="section8 sec">
+                <div class="header">
+                    <p>08</p>
+                    <p>Unusual Index</p>
+                </div>
+                <div class="copy">
+                    <h1>Curabitur aliquet quam id dui posuere blandit. Nulla quis lorem ut libero malesuada feugiat.
+                    </h1>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <h1>A Warm invitation to a world where imagination is the only limit and the ordinary is
+                        extraordinary</h1>
+                </div>
+            </div>
+
+        </div>
+        <div class="whitespace"></div>
+    </div>
+    </div>
+    <script>
+        const mapDivs = document.querySelectorAll(".map > div");
+        const sectionDivs = document.querySelectorAll(".sections > .sec");
+        const sectionHeights = [];
+        const accumulatedHeights = [];
+        const RATIO = 0.5;
+
+        let accumulatedHeight = 0;
+        sectionDivs.forEach(div => {
+            const height = div.clientHeight;
+            sectionHeights.push(height * RATIO);
+            accumulatedHeight += height;
+            accumulatedHeights.push(accumulatedHeight);
+        })
+        let lastActiveIndex = -1;
+
+        function updateMapHeights(scrollPos) {
+            for (let i = 0; i < accumulatedHeights.length; i++) {
+                if (i === 0 && scrollPos < accumulatedHeights[i]) {
+                    if (lastActiveIndex !== i) {
+                        if (lastActiveIndex >= 0) {
+                            mapDivs[lastActiveIndex].style.height = "100px";
+                        }
+                        mapDivs[i].style.height = `${sectionHeights[i]}px`;
+                        lastActiveIndex = i;
+                    }
+                    break;
+                } else if (
+                    i > 0 &&
+                    scrollPos >= accumulatedHeights[i - 1] &&
+                    scrollPos < accumulatedHeights[i]) { 
+                    if (lastActiveIndex !== i) {
+                        if (lastActiveIndex >= 0) {
+                            mapDivs[lastActiveIndex].style.height = "100px";
+                        }
+                        mapDivs[i].style.height = `${sectionHeights[i]}px`;
+                        lastActiveIndex = i;
+                    }
+                    break;
+                }
+            }
+        }
+        const sectionsTotalHeight = [...sectionDivs].reduce((sum, section) => sum + section.clientHeight, 0);
+ 
+        const mapTotalHeight = [...mapDivs].reduce((sum, mapDiv) => sum + mapDiv.clientHeight, 0) + (mapDivs.length - 1) * 75
+        const sectionsScrollableHeight = sectionsTotalHeight - window.innerHeight;
+        const mapScrollableHeight = mapTotalHeight - window.innerHeight;
+
+        const scrollRatio = mapScrollableHeight / sectionsScrollableHeight;
+
+        window.addEventListener("scroll", () => {
+            const scrollPos = window.scrollY;
+            const mapTranslateY = scrollPos * scrollRatio;
+            document.querySelector(".map").style.transform = `translateY(-${mapTranslateY}px)`;
+            updateMapHeights(scrollPos);
+            updateMapHeights(scrollPos);
+        })
+
+    </script>
+</body>
+
+</html>

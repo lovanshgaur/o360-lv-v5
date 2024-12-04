@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Details</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <style>
+        body{
+            background: #230E09;
+        }
+        header{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        header h1{
+            font-size: 3rem;
+        }
+        header h4{
+            width: 60%;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+        header::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5),#230e0942);
+            z-index: 100;
+        }
+        main{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        .package-name{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+        }
+        .package-name h1{
+            text-transform: uppercase;
+            font-size: 55vh;
+            opacity: 0.2;
+            font-family: var(--jakarta);
+        }
+        .package-features {
+            width: 100%;
+            height: 100vh;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            font-family: var(--mersad);
+            color: #C7AA9E;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .package-features li {
+            margin-bottom: 0.75rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.5;
+            padding-left: 1.5rem;
+            width: 50%;
+            font-size: 1.5rem;
+            text-shadow: 0 0 2px #C7AA9E;
+        }
+
+        .package-features li::before {
+            content: '✔';
+            color: #ff6f61;
+            position: absolute;
+            left: -1.5rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Reload Transition -->
+    <div class="transition">
+        <div class="transition-row row-1">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+        </div>
+        <div class="transition-row row-2">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+        </div>
+    </div>
+
+    <!-- MainContainer -->
+    <div id="container">
+
+        <!-- -----------Nav Section----------- -->
+        <nav>
+            <div id="logo">
+                <a href="../index.html"><img src="../img/logo.png" alt="Logo"></a>
+            </div>
+            <div id="navbar">
+                <div class="nav-icon" id="nav-icon">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div id="sidebar" class="sidebar">
+                    <div class="link-container">
+                        <a href="../index.html" class="active-link">Home</a>
+                        <a href="service.html">Services</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Connect</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-------------Nav Section------------->
+        <header>
+        </header>
+        <main>
+            <div class="package-name">
+                <h1 id="packageName"></h1>
+            </div>
+            <div class="package-features">
+                
+            </div>
+        </main>
+    </div>
+
+    <!-- GSAP Libraries  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/global.js"></script>
+    <script src="../js/reloadTransition.js"></script>
+    <script src="../js/wedding-package.js"></script>
+    <script>
+
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
+            const name = params.get("name");
+            return { id, name };
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const { id, name } = getQueryParams();
+
+            if (id && name) {
+                console.log(id, name);
+                document.title = `${name} package details`;
+                const package = weddingPackages[name];
+                document.querySelector("header").style.background = `url(../img/${name}.jpg) no-repeat center center/cover`;
+                document.querySelector("#packageName").textContent = name;
+                document.querySelector(".package-features").innerHTML = package.features.map(feature => `<li>${feature}</li>`).join("");
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

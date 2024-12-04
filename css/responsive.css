@@ -1,0 +1,214 @@
+@media (max-width: 991px) {
+    html {
+      font-size: 75%;
+    }
+    .active-link {
+      color: var(--accent);
+    }
+  }
+  @media (max-width: 768px) {
+    html {
+      font-size: 65%;
+    }
+    nav{background: rgba(0, 0, 0, 0.2);}
+    #logo {
+      margin-left: 1rem;
+      height: 50%;
+    }
+    .nav-icon {
+      height: 35%;
+    }
+    .nav-icon .bar {
+      width: 35px;
+    }
+    .close-icon .bar:nth-child(1) {
+      transform: translate(10px, 12px) rotate(45deg);
+    }
+    .close-icon .bar:nth-child(3) {
+      transform: translate(10px, -15px) rotate(-45deg);
+    }
+    .sidebar {
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sidebar a {
+      font-size: 6rem;
+    }
+    .link-container {
+      align-items: center;
+      width: max-content;
+    }
+    .banner video {
+      object-fit: fill;
+    }
+    .banner-text {
+      width: 90%;
+      font-size: 1.5rem;
+    }
+    .btn-container {
+      margin-top: 5rem;
+    }
+    .btn-container img {
+      width: auto;
+      height: 80%;
+    }
+
+
+    #about .content-box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    #about .content-box:nth-child(1) {
+      z-index: 100;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    #about .content-box .text {
+      width: 100%;
+      height: 50%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .text p {
+      font-size: 1.75rem;
+    }
+    .text .point {
+      font-size: 1.5rem;
+    }
+    #about .btn2-container {
+      margin-top: 5%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #about .btn2-container button {
+      padding: 2rem;
+      font-size: 1.25rem;
+      border-radius: 3rem;
+    }
+
+    /* brands section */
+    .brand{
+        animation: none;
+    }
+    .brand-logo{
+        height: 80%;
+    }
+
+    /* play section */
+    .play-overlay video {
+      object-position: right left;
+      object-fit: cover;
+    }
+    .play-text {
+      width: 100%;
+      height: 100%;
+    }
+    .play-text-box {
+      width: 100%;
+      height: max-content;
+      padding: 4rem 0rem;
+      top: auto;
+      right: auto;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      bottom: 0%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .play-text-box h1 {
+      font-size: 4rem;
+    }
+    .play-text-box p {
+      font-size: 2rem;
+    }
+    .play-btn-overlay {
+      display: none;
+    }
+    .play-btn {
+      width: 60%;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid snow;
+    }
+    .play-btn a {
+      font-size: 2.5rem;
+      color: snow;
+    }
+
+    /* service list section */
+    .list-content{
+        width: 100%;
+    }
+    .service-name-box, .service-text-box{
+        clip-path: none !important;
+    }
+  
+    .service-profile{
+        display: none;
+    }
+    /* vr section */
+    #vr{
+        height: 50vh;
+    }
+    .vr-container{
+        position: relative;
+    }
+    .vr-content{
+        width: 80%;
+    }
+    .vr-profile{
+        height: max-content;
+        width: 100%;
+        position: absolute;
+        right: 0%;
+        bottom: 0;
+    }
+    .vr-profile img{
+        margin-left: 20%;
+        width: 80%;
+        height: auto;
+    }
+    .download-profile{
+      animation: none;
+      width: 100%;
+    }
+    .download-text{
+      width: 100%;
+      height: 100%;
+      top: 0%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--color);
+      text-shadow: 1px 1px 2px black;
+    }
+  
+    footer .container {
+      flex-direction: column;
+    }
+    footer .container .left,
+    footer .container .footer-details {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 476px) {
+    html {
+      font-size: 45%;
+    }
+  }
+  

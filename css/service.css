@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#main-service {
+  width: 100%;
+  height: 100%;
+  background: url("../img/service/real-estate.png");
+  background-size: 100% auto;
+  transition: all 0.5s ease-in-out;
+}
+
+.container {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+}
+
+section {
+  width: 120vw;
+  font-size: 6em;
+  line-height: 1em;
+}
+
+.wrap {
+  display: flex;
+  height: 100%;
+}
+
+.service-section {
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -200px;
+}
+
+.service-panels {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.service-panel {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 4rem;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+  padding: 2rem 1.25rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+  cursor: pointer;
+  border-left: 0.2em solid var(--accent);
+  font-weight: 500;
+}
+
+.service-panel:nth-child(1) {
+  border-left: none;
+}
+
+.service-panel[data-service-section="2"].init {
+  left: calc(100vw - 28rem);
+}
+
+.service-panel[data-service-section="2"].fixed {
+  left: 4rem;
+  border-left: 0.2em solid var(--accent);
+}
+
+.service-panel[data-service-section="3"].init {
+  left: calc(100vw - 24rem);
+}
+
+.service-panel[data-service-section="3"].fixed {
+  left: 8rem;
+}
+
+.service-panel[data-service-section="4"].init {
+  left: calc(100vw - 20rem);
+}
+
+.service-panel[data-service-section="4"].fixed {
+  left: 12rem;
+}
+
+.service-panel[data-service-section="5"].init {
+  left: calc(100vw - 16rem);
+}
+
+.service-panel[data-service-section="5"].fixed {
+  left: 16rem;
+}
+
+.service-panel[data-service-section="6"].init {
+  left: calc(100vw - 12rem);
+}
+
+.service-panel[data-service-section="6"].fixed {
+  left: 20rem;
+}
+
+.service-panel[data-service-section="7"].init {
+  left: calc(100vw - 8rem);
+}
+
+.service-panel[data-service-section="7"].fixed {
+  left: 24rem;
+}
+
+.service-panel[data-service-section="8"].init {
+  left: calc(100vw - 4rem);
+}
+
+.service-panel[data-service-section="8"].fixed {
+  left: 28rem;
+}
+
+.service-panel-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-panel__title {
+  position: absolute;
+  top: 50%;
+  white-space: nowrap;
+  text-align: right;
+  transform: rotate(-90deg) translateY(-50%);
+}
+
+.service-panel__title,
+.service-panel__number {
+  text-transform: uppercase;
+  font-size: 2em;
+  line-height: 1rem;
+  color: var(--accent);
+}
+
+.service-panel__number {
+  position: absolute;
+  bottom: 2rem;
+}
+
+.section-content {
+  width: 40vw;
+  height: 90%;
+}
