@@ -204,6 +204,14 @@
     footer .container .footer-details {
       width: 100%;
     }
+
+    /* Contact CSS Files */
+    .form-container{
+      flex-direction: column;
+    }
+    .info-box, .form-box{
+      width: 100%;
+    }
   }
   
   @media (max-width: 476px) {
