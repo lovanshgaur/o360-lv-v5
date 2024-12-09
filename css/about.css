@@ -187,6 +187,7 @@ header {
 
 .name {
   position: relative;
+  background: gainsboro;
 }
 
 .name video {
