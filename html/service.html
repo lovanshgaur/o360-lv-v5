@@ -4,11 +4,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Okomo 360 - Home</title>
+    <title>Document</title>
+
     <link rel="stylesheet" href="../css/global.css" class="css">
     <link rel="stylesheet" href="../css/responsive.css" class="css">
-    <link rel="stylesheet" href="../css/service.css" class="css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Mersad';
+        }
 
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            transition: all 0.5s ease;
+            --accent: #b3ffab;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 800vh;
+            background: #000;
+            overflow-y: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 100vw;
+            min-height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 0.5s ease;
+        }
+
+        .slide-profile {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide-profile img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-profile-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-profile-text {
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            color: white;
+            z-index: 210;
+        }
+
+        .slide-profile-text h1 {
+            font-size: 8rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px #000000;
+        }
+
+        .slide-profile-text p {
+            width: 50%;
+            line-height: 2rem;
+            margin-left: 2rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px #000000;
+        }
+
+        .slide-detail {
+            position: absolute;
+            top: 100px;
+            left: -100%;
+            width: 50%;
+            height: 600px;
+            z-index: 200;
+            background-color: rgb(0, 0, 0);
+            font-weight: 600;
+            color: white;
+        }
+
+        .slide-theme {
+            background-color: var(--accent);
+            width: 2rem;
+            height: 0rem;
+        }
+
+
+        .active {
+            display: block;
+        }
+
+        section {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            width: 80%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .content-box {
+            flex: 1;
+            width: 50%;
+            height: 100%;
+            padding: 3rem 0rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-box h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 4rem;
+        }
+
+        .content-box p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 2rem;
+        }
+
+        .content-profile {
+            flex: 1;
+            width: 80%;
+            border-radius: 1rem;
+            background: #000;
+            overflow: hidden;
+
+        }
+
+        .content-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #slide1-section2 .content-box {
+            padding: 1rem 4rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            border-radius: 1rem;
+        }
+
+        #slide1-section2 .content-box p {
+            text-align: justify;
+            width: 80%;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: fixed;
+            bottom: 0;
+            width: auto;
+            padding: 16px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 5px;
+            transform: translateY(-50%);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .dots {
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            top: 50%;
+            right: 0%;
+            transform: rotate(90deg) translateY(-50%);
+            z-index: 100;
+        }
+
+        .dots-container {
+            display: flex;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dots-container::after {
+            content: "";
+            position: absolute;
+            bottom: 50%;
+            left: 5%;
+            width: 90%;
+            height: 10%;
+            transform: translateY(50%);
+            background: floralwhite;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: floralwhite;
+            cursor: pointer;
+            z-index: 110;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            transition: all 0.5s ease;
+
+        }
+
+        .active-dot {
+            background-color: var(--accent);
+        }
+
+        #slide1 {
+            height: 500vh;
+        }
+
+        .scroll {
+            padding: 1rem 2.5rem;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            z-index: 300;
+        }
+
+        .read-more {
+            position: fixed;
+            bottom: 5%;
+            left: 5%;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            position: fixed;
+            bottom: 5%;
+            left: 5%;
+            display: none;
+            background-color: black;
+            color: white;
+        }
+
+        section {
+            width: 100%;
+            height: 100vh;
+            background: azure;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,234 +310,313 @@
         </div>
     </div>
 
-    <!-- MainContainer -->
-    <div id="container">
+    <div class="slideshow-container">
 
-        <!-- -----------Nav Section----------- -->
-        <nav>
-            <div id="logo">
-                <a href="../index.html"><img src="../img/logo.png" alt=""></a>
+        <div class="slide active" id="slide1">
+            <div class="slide-detail">
+                <div class="slide-theme"></div>
             </div>
-            <div id="navbar">
-                <div class="nav-icon" id="nav-icon">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-                <div id="sidebar" class="sidebar">
-                    <div class="link-container">
-                        <a href="../index.html" class="active-link">Home</a>
-                        <a href="service.html">Services</a>
-                        <a href="about.html">About</a>
-                        <a href="contact.html">Connect</a>
-                    </div>
+            <div class="slide-profile">
+                <img src="../img/service/tourism.png" alt="Tourism">
+                <div class="slide-profile-overlay"></div>
+                <div class="slide-profile-text">
+                    <h1>Tourism</h1>
+                    <p>Experience global destinations like never before with OKOMO360's immersive 360-degree virtual
+                        tours. From scenic landscapes to historical sites, explore the world from the comfort of your
+                        home.</p>
                 </div>
             </div>
-        </nav>
-        <!-- -----------Nav Section------------->
-        <main id="main-serivce">
-            <div class="service-panels">
-
-                <div class="service-panel init" data-service-section="1" data-href="overview">
-                    <div class="service-panel-content">
-                        <div class="service-panel__title">Overview</div>
-                        <div class="service-panel__number">1</div>
+            <section class="slide1-section" id="slide1-section1">
+                <div class="content">
+                    <div class="content-box" style="align-items: flex-start; justify-content: flex-start;">
+                        <h1>Virtual Tourism</h1>
+                        <p>Experience global destinations like never before with OKOMO360's immersive 360-degree virtual
+                            Discover breathtaking tours that take you from scenic landscapes to historical sites,
+                            allowing you to explore the world from the comfort of your home. With our cutting-edge
+                            technology, you can immerse yourself in vibrant cultures, interact with local communities,
+                            and experience the sights and sounds of each destination as if you were truly there. Whether
+                            it's wandering through ancient ruins, enjoying the beauty of nature, or participating in
+                            local festivals, our virtual tours offer an unforgettable journey that transcends borders
+                            and time zones. </p>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-profile">
+                            <img src="../img/service/Apple_Vision_Pro_502b8b4e92.webp" alt="">
+                        </div>
                     </div>
                 </div>
-
-                <div class="service-panel init" data-service-section="2" data-href="design">
-                    <div class="service-panel-content">
-                        <div class="service-panel__title">Design</div>
-                        <div class="service-panel__number">2</div>
+            </section>
+            <section class="slide1-section" id="slide1-section2">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Why Virtual Tourism?</h1>
+                        <p>Virtual tourism provides numerous advantages that appeal to both travelers and tourism
+                            providers. It allows individuals to explore diverse destinations from the comfort of their
+                            homes, making travel more accessible and affordable. This innovative approach not only
+                            enhances the travel experience but also promotes cultural exchange and understanding, as
+                            users can engage with local communities and environments in a unique way.</p>
                     </div>
-                </div>
 
-                <div class="service-panel init" data-service-section="3" data-href="development">
-                    <div class="service-panel-content">
-                        <div class="service-panel__title">Development</div>
-                        <div class="service-panel__number">3</div>
-                    </div>
                 </div>
+            </section>
+            <section class="slide1-section" id="slide1-section3">
 
-                <div class="service-panel init" data-service-section="4" data-href="marketing">
-                    <div class="service-panel-content">
-                        <div class="service-panel__title">Marketing</div>
-                        <div class="service-panel__number">4</div>
-                    </div>
-                </div>
+            </section>
+            <button class="read-more scroll">Read More</button>
+            <button class="close scroll">Close</button>
+        </div>
 
-                <div class="service-panel init" data-service-section="5" data-href="support">
-                    <div class="service-panel-content">
-                        <div class="service-panel__title">Support</div>
-                        <div class="service-panel__number">5</div>
-                    </div>
-                </div>
-
-                <div class="service-panel init" data-service-section="6" data-href="support">
-                    <div class="service-panel-content">
-                        <div class="service-panel__title">Support</div>
-                        <div class="service-panel__number">6</div>
-                    </div>
-                </div>
-
-                <div class="service-panel init" data-service-section="7" data-href="support">
-                    <div class="service-panel-content">
-                        <div class="service-panel__title">Support</div>
-                        <div class="service-panel__number">7</div>
-                    </div>
-                </div>
-
-                <div class="service-panel init" data-service-section="8" data-href="support">
-                    <div class="service-panel-content">
-                        <div class="service-panel__title">Support</div>
-                        <div class="service-panel__number">8</div>
-                    </div>
-                </div>
-
+        <div class="slide" id="slide2">
+            <div class="slide-detail">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
             </div>
-
-            <div class="container" data-scroll-container>
-                <div class="wrap" data-scroll-section>
-
-                    <section class="service-section overview" data-service-section="1" id="overview">
-                        Overview Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br>
-                        industry.
-                    </section>
-
-                    <section class="service-section design" data-service-section="2" id="design">
-                        Design Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br> industry.
-                    </section>
-
-                    <section class="service-section development" data-service-section="3" id="development">
-                        Development Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br>
-                        industry.
-                    </section>
-
-                    <section class="service-section marketing" data-service-section="4" id="marketing">
-                        Marketing Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br>
-                        industry.
-                    </section>
-
-                    <section class="service-section support" data-service-section="5" id="support">
-                        Support Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br>
-                        industry.
-                    </section>
-
-                    <section class="service-section support" data-service-section="6" id="support">
-                        Support Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br>
-                        industry.
-                    </section>
-
-                    <section class="service-section support" data-service-section="7" id="support">
-                        Support Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br>
-                        industry.
-                    </section>
-
-                    <section class="service-section support" data-service-section="8" id="support">
-                        Support Lorem Ipsum is <br> simply dummy text of the <br> printing and typesetting <br>
-                        industry.
-                    </section>
-
+            <div class="slide-profile">
+                <img src="../img/service/social-media.png" alt="Social Media">
+                <div class="slide-profile-overlay"></div>
+                <div class="slide-profile-text">
+                    <h1>Social Media</h1>
+                    <p>Share your world in 360° with OKOMO360's social media solutions. Capture events, moments, and
+                        places in full immersive detail, giving your audience a truly interactive experience.</p>
                 </div>
             </div>
+            <button class="read-more scroll">Read More</button>
+            <button class="close scroll">Close</button>
+        </div>
 
-        </main>
+        <div class="slide" id="slide3">
+            <div class="slide-detail">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            </div>
+            <div class="slide-profile">
+                <img src="../img/service/concert.png" alt="Concert">
+                <div class="slide-profile-overlay"></div>
+                <div class="slide-profile-text">
+                    <h1>Concert</h1>
+                    <p>Enjoy live performances from your favorite artists through OKOMO360's VR concert experiences.
+                        Feel as though you're in the front row, enjoying every beat, every note, and every moment.</p>
+                </div>
+            </div>
+            <button class="read-more scroll">Read More</button>
+            <button class="close scroll">Close</button>
+        </div>
 
+        <div class="slide" id="slide4">
+            <div class="slide-detail">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            </div>
+            <div class="slide-profile">
+                <img src="../img/service/corporate.png" alt="Corporate">
+                <div class="slide-profile-overlay"></div>
+                <div class="slide-profile-text">
+                    <h1>Corporate</h1>
+                    <p>Enhance your corporate presentations with OKOMO360's interactive VR solutions. Provide clients
+                        with immersive virtual walkthroughs, product demos, and training simulations for a more engaging
+                        experience.</p>
+                </div>
+            </div>
+            <button class="read-more scroll">Read More</button>
+            <button class="close scroll">Close</button>
+        </div>
 
+        <div class="slide" id="slide5">
+            <div class="slide-detail">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            </div>
+            <div class="slide-profile">
+                <img src="../img/service/educational.png" alt="Educational">
+                <div class="slide-profile-overlay"></div>
+                <div class="slide-profile-text">
+                    <h1>Educational</h1>
+                    <p>Step into the future of education with OKOMO360's immersive virtual classrooms. Experience
+                        educational content in 360° for a more engaging and interactive learning environment.</p>
+                </div>
+            </div>
+            <button class="read-more scroll">Read More</button>
+            <button class="close scroll">Close</button>
+        </div>
 
+        <div class="slide" id="slide6">
+            <div class="slide-detail">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            </div>
+            <div class="slide-profile">
+                <img src="../img/service/extreme-sport.png" alt="Extreme Sports">
+                <div class="slide-profile-overlay"></div>
+                <div class="slide-profile-text">
+                    <h1>Extreme Sports</h1>
+                    <p>Dive into adrenaline-pumping action with OKOMO360's extreme sports VR experiences. Feel the rush
+                        of skydiving, skiing, and surfing, all from a first-person perspective, bringing you closer to
+                        the action.</p>
+                </div>
+            </div>
+            <button class="read-more scroll">Read More</button>
+            <button class="close scroll">Close</button>
+        </div>
+
+        <div class="slide" id="slide7">
+            <div class="slide-detail">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            </div>
+            <div class="slide-profile">
+                <img src="../img/service/real-estate.png" alt="Real Estate">
+                <div class="slide-profile-overlay"></div>
+                <div class="slide-profile-text">
+                    <h1>Real Estate</h1>
+                    <p>Explore real estate like never before with OKOMO360's immersive property tours. View homes,
+                        offices, and commercial spaces from any angle and make better-informed decisions with virtual
+                        walkthroughs.</p>
+                </div>
+            </div>
+            <button class="read-more scroll">Read More</button>
+            <button class="close scroll">Close</button>
+        </div>
+
+        <div class="slide" id="slide8">
+            <div class="slide-detail">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            </div>
+            <div class="slide-profile">
+                <img src="../img/service/vr-games.avif" alt="VR Games">
+                <div class="slide-profile-overlay"></div>
+                <div class="slide-profile-text">
+                    <h1>VR Games</h1>
+                    <p>Step into the future of gaming with OKOMO360's VR game experiences. Engage in a fully immersive,
+                        interactive gaming environment that transports you into dynamic, action-packed worlds.</p>
+                </div>
+            </div>
+            <button class="read-more scroll">Read More</button>
+            <button class="close scroll">Close</button>
+        </div>
+
+        <button class="control prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="control next" onclick="changeSlide(1)">&#10095;</button>
+
+        <div class="dots">
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+            </div>
+        </div>
     </div>
 
 
-    <!-- GSAP Libraries  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
-        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- LocomotiveScroll -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.0.6/dist/locomotive-scroll.min.js"></script>
-
-
-    <script src="../js/global.js"></script>
-    <script src="../js/reloadTransition.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
 
     <script>
- // Initialize LocomotiveScroll
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true,
-    direction: "horizontal",
-});
+        gsap.registerPlugin(ScrollToPlugin);
 
-// Function to change background
-const changeBackground = (index) => {
-    const mainService = document.querySelector("#main-serivce");
-    const backgrounds = {
-        "1": "url(../img/service/real-estate.png)",  
-        "2": "url(../img/service/extreme-sport.png)",
-        "3": "url(../img/service/tourism.png)",  
-        "4": "url(../img/service/concert.png)", 
-        "5": "url(../img/service/educational.png)",
-        "6": "url(../img/service/educational.png)",
-        "7": "url(../img/service/educational.png)",
-        "8": "url(../img/service/educational.png)",
-    };
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-    // Update the background with a fade effect
-    mainService.style.transition = "background-image 0.5s ease-in-out";
-    mainService.style.backgroundImage = backgrounds[index];
-};
-
-// Detect active panel and trigger background change
-scroll.on("scroll", (instance) => {
-    const panels = document.querySelectorAll(".service-panel[data-service-section]");
-    panels.forEach((panel) => {
-        const sectionId = panel.getAttribute("data-service-section");
-        const section = document.querySelector(`.service-section[data-service-section="${sectionId}"]`);
-
-        if (section) {
-            const sectionLeft = section.getBoundingClientRect().left;
-            const viewportWidth = window.innerWidth;
-
-            if (sectionLeft <= viewportWidth / 2 && sectionLeft >= -viewportWidth / 2) {
-                // Trigger background change for the active panel
-                changeBackground(sectionId);
-            }
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
         }
-    });
-});
 
-// Panel positioning logic
-let panels = document.querySelectorAll(".service-panel[data-service-section]");
-scroll.on("scroll", () => {
-    panels.forEach((panel) => {
-        let attr = panel.getAttribute("data-service-section");
-        let section = document.querySelector(`section[data-service-section="${attr}"]`);
-
-        if (section) {
-            let sectionLeft = section.getBoundingClientRect().left;
-
-            // For the Overview panel (always fixed)
-            if (attr === "1") {
-                panel.classList.add("fixed");
-                panel.style.left = "0";
-            } else {
-                if (sectionLeft <= panel.offsetWidth * attr) {
-                    panel.classList.add("fixed");
-                    panel.classList.remove("init");
-                    panel.style.left = `${(attr - 1) * panel.offsetWidth}px`;
-                } else {
-                    panel.classList.add("init");
-                    panel.classList.remove("fixed");
-                    panel.style.left = `calc(100vw - ${4 * (9 - attr)}rem)`;
-                }
-            }
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
         }
-    });
-});
-   </script>
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active-dot", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active-dot";
+        }
+
+        document.body.style.overflow = 'hidden';
+
+        const moreButtons = document.querySelectorAll(".read-more");
+        const closeButtons = document.querySelectorAll(".close");
+        const dots = document.querySelector(".dots");
+        const controls = document.querySelectorAll(".control");
+
+        moreButtons.forEach((moreBtn, index) => {
+            moreBtn.addEventListener("click", () => {
+
+                moreBtn.style.display = "none";
+                closeButtons[index].style.display = "block";
+                let tl = gsap.timeline();
+                tl.to(".slide-detail", {
+                    duration: 1,
+                    ease: "power2.inOut",
+                    left: 0,
+                    opacity: 1,
+                });
+                tl.to(".slide-theme", {
+                    duration: 0.5,
+                    ease: "power2.inOut",
+                    height: "16rem"
+                })
+                document.body.style.overflow = 'auto';
+                dots.style.display = "none";
+                controls.forEach(control => control.style.display = "none");
+
+                tl.to(window, {
+                    duration: 1.5,
+                    ease: "power2.inOut",
+                    scrollTo: { y: 1000, autoKill: false },
+                });
+            });
+        });
+
+        closeButtons.forEach((closeBtn, index) => {
+            closeBtn.addEventListener("click", () => {
+                let tl = gsap.timeline();
+                tl.to(window, {
+                    duration: 1,
+                    ease: "power2.inOut",
+                    scrollTo: { y: 0, autoKill: false },
+                }).call(() => {
+                    document.body.style.overflow = 'hidden';
+                });
+                tl.to(".slide-theme", {
+                    duration: 0.5,
+                    ease: "power2.inOut",
+                    height: "0rem"
+                })
+                tl.to(".slide-detail", {
+                    duration: 1,
+                    ease: "power2.inOut",
+                    left: "-100%",
+                    opacity: 0,
+                });
+
+
+
+                dots.style.display = "block";
+                controls.forEach(control => control.style.display = "block");
+
+                closeBtn.style.display = "none";
+                moreButtons[index].style.display = "block";
+            });
+        });
+
+    </script>
 </body>
 
 </html>
