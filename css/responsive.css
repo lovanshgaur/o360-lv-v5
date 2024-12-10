@@ -221,6 +221,7 @@
     #connect-header{
       height: 5vh;
       display: none;
+      background-color: antiquewhite;
     }
     .info-box, .form-box{
       width: 100%;
