@@ -36,6 +36,10 @@
     .sidebar a {
       font-size: 6rem;
     }
+    .sidebar a:hover::before {
+      content: "";
+      padding: 0;
+    }
     .link-container {
       align-items: center;
       width: max-content;
@@ -210,13 +214,17 @@
 
     /* Contact CSS Files */
     .form-container{
+      height: max-content;
+      padding: 2rem 0rem;
       flex-direction: column;
     }
     #connect-header{
-      height: 10vh;
+      height: 5vh;
+      display: none;
     }
     .info-box, .form-box{
       width: 100%;
+      height: max-content;
       margin-top: 4rem;
     }
     .info-contacts{

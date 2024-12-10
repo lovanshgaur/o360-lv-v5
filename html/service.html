@@ -619,7 +619,7 @@
 
         moreButtons.forEach((moreBtn, index) => {
             moreBtn.addEventListener("click", () => {
-                disableEvents = true; // Disable touch and keyboard events
+                disableEvents = true;
                 console.log("Events disabled");
                 let closeBtn = closeButtons[index]
                 document.body.style.overflow = 'auto';

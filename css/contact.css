@@ -91,11 +91,12 @@
 }
 
 .info-heading h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .info-heading p {
-    font-size: 1rem;
+    margin-top: 1rem;
+    font-size: 1.8rem;
     color: var(--color);
     line-height: 1.2;
 }
@@ -173,7 +174,7 @@
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     transition: all 0.3s ease;
 }
 
@@ -182,7 +183,7 @@ textarea {
     padding: 0.75rem 0;
     border: none;
     border-bottom: 2px solid #444;
-    font-size: 1rem;
+    font-size: 1.5rem;
     width: 100%;
     background: transparent;
     color: var(--accent);
@@ -218,6 +219,9 @@ textarea:focus {
     background-color: #333 !important;
 }
 
+.category p{
+    font-size: 1.5rem;
+}
 .radio-group {
     display: flex;
     flex-wrap: wrap;
@@ -229,7 +233,7 @@ textarea:focus {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
