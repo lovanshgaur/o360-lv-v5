@@ -117,84 +117,49 @@
 
 
         <!-- VR Tech -->
-        <section class="vr-tech">
+        <section class="vr-tech" id="vr-tech">
 
             <div class="vr-tech-heading">
                 <h1>Immersive Virtual Reality Experiences</h1>
-                <p>we specialize in immersive experiences that bring virtual reality to life. From 360-degree video
+                <p>We specialize in immersive experiences that bring virtual reality to life. From 360-degree video
                     tours to cutting-edge VR solutions, we create interactive environments that push the boundaries
                     of technology. Whether it's for education, entertainment, or business, our innovations make it
                     possible to explore new worlds with just a headset</p>
             </div>
+
             <div class="vr-tech-content">
 
-                <div class="swiper-slide vr-tech-video">
+                <div class="vr-tech-video">
                     <div class="video-overlay"></div>
                     <img src="../img/vr-girl.png" alt="">
-                    <!-- <video src="../img/vr-girl.mp4" autoplay loop muted></video> -->
+                    <video src="../img/vr-girl.mp4" autoplay loop muted></video>
                     <div class="video-text">
                         <h3>Entertainement</h3>
                     </div>
                 </div>
 
-                <div class="swiper-slide vr-tech-video">
+                <div class="vr-tech-video">
                     <div class="video-overlay"></div>
                     <img src="../img/vr-work.png" alt="">
-                    <!-- <video src="../img/vr-work.mp4" autoplay loop muted></video> -->
+                    <video src="../img/vr-work.mp4" autoplay loop muted></video>
                     <div class="video-text">
                         <h3>Work</h3>
                     </div>
                 </div>
 
-                <div class="swiper-slide vr-tech-video">
+                <div class="vr-tech-video">
                     <div class="video-overlay"></div>
                     <img src="../img/vr-couple.png" alt="">
-                    <!-- <video src="../img/vr-couple.mp4" autoplay loop muted></video> -->
+                    <video src="../img/vr-couple.mp4" autoplay loop muted></video>
                     <div class="video-text">
                         <h3>Family</h3>
                     </div>
                 </div>
             </div>
 
-            <!-- Swiper -->
-
-            <div class="swiper mySwiper vr-tech-content res">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide vr-tech-video">
-                        <div class="video-overlay"></div>
-                        <img src="../img/vr-girl.png" alt="">
-                        <video src="../img/vr-girl.mp4" autoplay loop muted></video>
-                        <div class="video-text">
-                            <h3>Entertainement</h3>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide vr-tech-video">
-                        <div class="video-overlay"></div>
-                        <img src="../img/vr-work.png" alt="">
-                        <video src="../img/vr-work.mp4" autoplay loop muted></video>
-                        <div class="video-text">
-                            <h3>Work</h3>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide vr-tech-video">
-                        <div class="video-overlay"></div>
-                        <img src="../img/vr-couple.png" alt="">
-                        <video src="../img/vr-couple.mp4" autoplay loop muted></video>
-                        <div class="video-text">
-                            <h3>Family</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-
         </section>
+
+
 
         <!-- NameVideoBg -->
         <section class="name">
@@ -255,7 +220,7 @@
 
     <!-- Initialize Swiper -->
     <script>
-        var swiper = new Swiper(".mySwiper", {
+        var swiper = new Swiper(".mySwiperVr", {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
@@ -264,8 +229,8 @@
                 clickable: true,
             },
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".swiper-button-next-vr",
+                prevEl: ".swiper-button-prev-vr",
             },
         });
     </script>

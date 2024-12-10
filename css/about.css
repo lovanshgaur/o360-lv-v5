@@ -124,6 +124,7 @@ header {
   padding: 4rem 0rem;
   flex-direction: column;
 }
+
 .vr-tech-heading {
   width: 80%;
   font-size: 1.25rem;
@@ -141,7 +142,6 @@ header {
   align-items: center;
   justify-content: center;
 }
-
 
 .vr-tech-video {
   width: auto !important;
@@ -183,7 +183,6 @@ header {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
   z-index: 40;
 }
-.res{display: none;}
 
 .name {
   position: relative;
@@ -235,11 +234,26 @@ header {
   .why-us {
     height: max-content;
   }
-
+  .vr-tech-content{
+    gap: 4rem;
+    overflow-x: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2rem;
+  }
+  .vr-tech-content img{opacity: 0;}
+  .vr-tech-video video{z-index: 30;}
   .name {
     height: 40vh;
   }
   .brand-name {
     font-size: 9rem;
+  }
+  .name video {
+    display: none;
+  }
+  .name h1 {
+    mix-blend-mode: normal;
+    color: var(--accent);
   }
 }
