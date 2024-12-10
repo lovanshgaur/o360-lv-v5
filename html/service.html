@@ -31,8 +31,8 @@
             <div class="block"></div>
         </div>
     </div>
-      <!-------------Nav Section------------->
-      <nav>
+    <!-------------Nav Section------------->
+    <nav>
         <div id="logo">
             <a href="../index.html"><img src="../img/logo.png" alt=""></a>
         </div>
@@ -570,35 +570,44 @@
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active-dot";
         }
-        // Function to run when left or right arrow key is pressed
+        let disableEvents = false; // Flag to control event handling
+
+        // Function to handle left or right arrow keys
         function handleArrowKeys(event) {
+            if (disableEvents) return; // Exit the function if events are disabled
+
             if (event.key === "ArrowLeft") {
-                changeSlide(-1)
+                console.log("Left arrow pressed");
+                // Run your function for left arrow here
             } else if (event.key === "ArrowRight") {
-                changeSlide(1)
+                console.log("Right arrow pressed");
+                // Run your function for right arrow here
             }
         }
-        document.addEventListener("keydown", handleArrowKeys);
 
-
-        let touchStartX = 0;
+        // Function to handle touch events
         function handleTouchStart(event) {
+            if (disableEvents) return; // Exit if events are disabled
+
             const touch = event.touches[0];
-            touchStartX = touch.pageX; 
+            touchStartX = touch.pageX;
         }
 
         function handleTouchEnd(event) {
-            const touch = event.changedTouches[0]; 
+            if (disableEvents) return; // Exit if events are disabled
+
+            const touch = event.changedTouches[0];
             const touchEndX = touch.pageX;
+
             if (touchEndX < touchStartX) {
                 console.log("Swiped left");
-                changeSlide(1)
-            }
-            else if (touchEndX > touchStartX) {
+            } else if (touchEndX > touchStartX) {
                 console.log("Swiped right");
-                changeSlide(-1)
             }
         }
+
+        // Add event listeners for keyboard and touch events
+        document.addEventListener("keydown", handleArrowKeys);
         document.addEventListener("touchstart", handleTouchStart);
         document.addEventListener("touchend", handleTouchEnd);
 
@@ -614,6 +623,8 @@
 
         moreButtons.forEach((moreBtn, index) => {
             moreBtn.addEventListener("click", () => {
+                disableEvents = true; // Disable touch and keyboard events
+                console.log("Events disabled");
                 let closeBtn = closeButtons[index]
                 document.body.style.overflow = 'auto';
                 dots.style.display = "none";
@@ -639,7 +650,7 @@
                     ease: "power2.inOut",
                     height: "16rem"
                 })
-                tl.to(nav,{
+                tl.to(nav, {
                     backgroundColor: "black",
                     duration: 0.1
                 })
@@ -663,7 +674,7 @@
                 }).call(() => {
                     document.body.style.overflow = 'hidden';
                 });
-                tl.to(nav,{
+                tl.to(nav, {
                     backgroundColor: "transparent",
                     duration: 0.1
                 })
