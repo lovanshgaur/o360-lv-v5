@@ -570,43 +570,40 @@
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active-dot";
         }
-        let disableEvents = false; // Flag to control event handling
+        let disableEvents = false; 
 
-        // Function to handle left or right arrow keys
         function handleArrowKeys(event) {
-            if (disableEvents) return; // Exit the function if events are disabled
+            if (disableEvents) return;
 
             if (event.key === "ArrowLeft") {
                 console.log("Left arrow pressed");
-                // Run your function for left arrow here
+               changeSlide(-1)
             } else if (event.key === "ArrowRight") {
                 console.log("Right arrow pressed");
-                // Run your function for right arrow here
+                changeSlide(1)
             }
         }
-
-        // Function to handle touch events
         function handleTouchStart(event) {
-            if (disableEvents) return; // Exit if events are disabled
-
+            if (disableEvents) return;
             const touch = event.touches[0];
             touchStartX = touch.pageX;
         }
 
         function handleTouchEnd(event) {
-            if (disableEvents) return; // Exit if events are disabled
+            if (disableEvents) return;
 
             const touch = event.changedTouches[0];
             const touchEndX = touch.pageX;
 
             if (touchEndX < touchStartX) {
                 console.log("Swiped left");
+                changeSlide(-1)
             } else if (touchEndX > touchStartX) {
+                changeSlide(1)
                 console.log("Swiped right");
             }
         }
 
-        // Add event listeners for keyboard and touch events
         document.addEventListener("keydown", handleArrowKeys);
         document.addEventListener("touchstart", handleTouchStart);
         document.addEventListener("touchend", handleTouchEnd);
