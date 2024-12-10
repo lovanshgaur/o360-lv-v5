@@ -597,9 +597,9 @@
 
             if (touchEndX < touchStartX) {
                 console.log("Swiped left");
-                changeSlide(-1)
-            } else if (touchEndX > touchStartX) {
                 changeSlide(1)
+            } else if (touchEndX > touchStartX) {
+                changeSlide(-1)
                 console.log("Swiped right");
             }
         }
