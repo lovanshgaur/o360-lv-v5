@@ -5,290 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link rel="stylesheet" href="../css/global.css" class="css">
     <link rel="stylesheet" href="../css/responsive.css" class="css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Mersad';
-        }
-
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-            transition: all 0.5s ease;
-            --accent: #b3ffab;
-        }
-
-        ::-webkit-scrollbar {
-            width: 0px;
-        }
-
-        .slideshow-container {
-            position: relative;
-            width: 100%;
-            height: 800vh;
-            background: #000;
-            overflow-y: hidden;
-        }
-
-        .slide {
-            display: none;
-            width: 100vw;
-            min-height: 100vh;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: all 0.5s ease;
-        }
-
-        .slide-profile {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-        }
-
-        .slide-profile img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .slide-profile-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .slide-profile-text {
-            position: absolute;
-            top: 25%;
-            left: 5%;
-            color: white;
-            z-index: 210;
-        }
-
-        .slide-profile-text h1 {
-            font-size: 8rem;
-            font-weight: 600;
-            text-shadow: 0 0 10px #000000;
-        }
-
-        .slide-profile-text p {
-            width: 50%;
-            line-height: 2rem;
-            margin-left: 2rem;
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-shadow: 0 0 10px #000000;
-        }
-
-        .slide-detail {
-            position: absolute;
-            top: 100px;
-            left: -100%;
-            width: 50%;
-            height: 600px;
-            z-index: 200;
-            background-color: rgb(0, 0, 0);
-            font-weight: 600;
-            color: white;
-        }
-
-        .slide-theme {
-            background-color: var(--accent);
-            width: 2rem;
-            height: 0rem;
-        }
+    <link rel="stylesheet" href="../css/service.css" class="css">
 
 
-        .active {
-            display: block;
-        }
-
-        section {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .content {
-            width: 80%;
-            height: 80%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .content-box {
-            flex: 1;
-            width: 50%;
-            height: 100%;
-            padding: 3rem 0rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #000000;
-        }
-
-        .content-box h1 {
-            font-size: 4rem;
-            font-weight: 600;
-            margin-bottom: 4rem;
-        }
-
-        .content-box p {
-            font-size: 1.5rem;
-            font-weight: 400;
-            line-height: 2rem;
-        }
-
-        .content-profile {
-            flex: 1;
-            width: 80%;
-            border-radius: 1rem;
-            background: #000;
-            overflow: hidden;
-
-        }
-
-        .content-profile img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        #slide1-section2 .content-box {
-            padding: 1rem 4rem;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgb(0, 0, 0);
-            color: white;
-            border-radius: 1rem;
-        }
-
-        #slide1-section2 .content-box p {
-            text-align: justify;
-            width: 80%;
-        }
-
-        .prev,
-        .next {
-            cursor: pointer;
-            position: fixed;
-            bottom: 0;
-            width: auto;
-            padding: 16px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            border-radius: 5px;
-            transform: translateY(-50%);
-        }
-
-        .prev {
-            left: 10px;
-        }
-
-        .next {
-            right: 10px;
-        }
-
-        .dots {
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            top: 50%;
-            right: 0%;
-            transform: rotate(90deg) translateY(-50%);
-            z-index: 100;
-        }
-
-        .dots-container {
-            display: flex;
-            gap: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dots-container::after {
-            content: "";
-            position: absolute;
-            bottom: 50%;
-            left: 5%;
-            width: 90%;
-            height: 10%;
-            transform: translateY(50%);
-            background: floralwhite;
-        }
-
-        .dot {
-            display: inline-block;
-            width: 1.5rem;
-            height: 1.5rem;
-            background: floralwhite;
-            cursor: pointer;
-            z-index: 110;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            transition: all 0.5s ease;
-
-        }
-
-        .active-dot {
-            background-color: var(--accent);
-        }
-
-        #slide1 {
-            height: 500vh;
-        }
-
-        .scroll {
-            padding: 1rem 2.5rem;
-            border: 1px solid white;
-            background: transparent;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            z-index: 300;
-        }
-
-        .read-more {
-            position: fixed;
-            bottom: 5%;
-            left: 5%;
-            z-index: 10000;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .close {
-            position: fixed;
-            bottom: 5%;
-            left: 5%;
-            display: none;
-            background-color: black;
-            color: white;
-        }
-
-        section {
-            width: 100%;
-            height: 100vh;
-            background: azure;
-        }
-    </style>
 </head>
 
 <body>
@@ -327,9 +48,10 @@
                         home.</p>
                 </div>
             </div>
+
             <section class="slide1-section" id="slide1-section1">
                 <div class="content">
-                    <div class="content-box" style="align-items: flex-start; justify-content: flex-start;">
+                    <div class="content-box">
                         <h1>Virtual Tourism</h1>
                         <p>Experience global destinations like never before with OKOMO360's immersive 360-degree virtual
                             Discover breathtaking tours that take you from scenic landscapes to historical sites,
@@ -360,17 +82,14 @@
 
                 </div>
             </section>
-            <section class="slide1-section" id="slide1-section3">
 
-            </section>
             <button class="read-more scroll">Read More</button>
             <button class="close scroll">Close</button>
         </div>
 
         <div class="slide" id="slide2">
             <div class="slide-detail">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                <div class="slide-theme"></div>
             </div>
             <div class="slide-profile">
                 <img src="../img/service/social-media.png" alt="Social Media">
@@ -381,14 +100,36 @@
                         places in full immersive detail, giving your audience a truly interactive experience.</p>
                 </div>
             </div>
+            <section class="slide2-section" id="slide2-section1">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Social Media Integration</h1>
+                        <p>Stay connected with the world around you through OKOMO360's seamless social media integration. Share your virtual tourism experiences with friends and family, or connect with like-minded explorers across the globe. Our platform allows you to easily post photos, videos, and updates from your tours directly to your social media accounts. Whether you're capturing a beautiful sunset, a historical landmark, or a unique cultural event, sharing your journey has never been easier. Join a global community of travelers and be a part of the virtual tourism revolution.</p>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-profile">
+                            <img src="../img/service/social_media_integration.webp" alt="Social Media Integration">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="slide2-section" id="slide2-section2">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Why Social Media Integration?</h1>
+                        <p>Social media integration enhances the virtual tourism experience by allowing users to share their adventures in real-time. By sharing their experiences, users not only create lasting memories but also inspire others to explore new destinations. It provides a sense of community, where travelers can exchange tips, photos, and stories, and even participate in virtual events or challenges. Social media integration helps promote cultural exchange, builds connections, and makes the experience more interactive and enjoyable for everyone.</p>
+                    </div>
+                </div>
+            </section>
+            
             <button class="read-more scroll">Read More</button>
             <button class="close scroll">Close</button>
         </div>
 
         <div class="slide" id="slide3">
             <div class="slide-detail">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                <div class="slide-theme"></div>
             </div>
             <div class="slide-profile">
                 <img src="../img/service/concert.png" alt="Concert">
@@ -399,14 +140,36 @@
                         Feel as though you're in the front row, enjoying every beat, every note, and every moment.</p>
                 </div>
             </div>
+            <section class="slide3-section" id="slide3-section1">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>VR Concerts</h1>
+                        <p>Step into the future of live entertainment with OKOMO360's VR Concerts. Experience the thrill of being at your favorite concert without ever leaving your home. With our cutting-edge virtual reality technology, you can attend live performances from top artists, interact with the crowd, and feel the energy of the event as if you were actually there. Whether it's a rock concert, a classical music performance, or an exclusive DJ set, VR Concerts provide an immersive experience that brings the magic of live shows straight to your living room.</p>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-profile">
+                            <img src="../img/service/vr_concert_immersive.webp" alt="VR Concert">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="slide3-section" id="slide3-section2">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Why VR Concerts?</h1>
+                        <p>VR Concerts offer numerous benefits for music lovers and performers alike. For fans, they provide access to live events that might otherwise be out of reach due to geographic or financial limitations. For performers, VR concerts open up a global audience, enabling them to reach fans from all over the world. The immersive nature of VR makes the experience feel more personal and engaging, allowing attendees to interact with the environment and even with other concert-goers in real-time. It’s the future of entertainment that redefines how we experience live music.</p>
+                    </div>
+                </div>
+            </section>
+            
             <button class="read-more scroll">Read More</button>
             <button class="close scroll">Close</button>
         </div>
 
         <div class="slide" id="slide4">
             <div class="slide-detail">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                <div class="slide-theme"></div>
             </div>
             <div class="slide-profile">
                 <img src="../img/service/corporate.png" alt="Corporate">
@@ -418,14 +181,38 @@
                         experience.</p>
                 </div>
             </div>
+
+            <section class="slide4-section" id="slide4-section1">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Corporate Virtual Experiences</h1>
+                        <p>Transform the way your company engages with clients, partners, and employees through OKOMO360's corporate virtual experiences. Host immersive virtual conferences, product launches, training sessions, and team-building events that bring your business to the forefront of innovation. Our platform offers dynamic, interactive environments where you can connect, collaborate, and engage in meaningful ways, no matter the distance. Whether it's showcasing your company's products or offering virtual tours of your facilities, we help you bring your brand to life in a captivating way.</p>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-profile">
+                            <img src="../img/service/corporate_virtual_experience.webp" alt="Corporate Virtual Experience">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="slide4-section" id="slide4-section2">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Why Corporate Virtual Experiences?</h1>
+                        <p>Corporate virtual experiences are a powerful tool to increase engagement, expand your reach, and create memorable interactions with clients and employees. These experiences are cost-effective, allowing you to host large events without the need for travel or physical space. The ability to personalize virtual environments, showcase your products, and enable interactive networking helps you deliver an immersive and impactful experience. Virtual corporate events also promote sustainability by reducing the carbon footprint of travel, making them a modern, eco-friendly solution for the business world.</p>
+                    </div>
+                </div>
+            </section>
+            
+
             <button class="read-more scroll">Read More</button>
             <button class="close scroll">Close</button>
         </div>
 
         <div class="slide" id="slide5">
             <div class="slide-detail">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                <div class="slide-theme"></div>
             </div>
             <div class="slide-profile">
                 <img src="../img/service/educational.png" alt="Educational">
@@ -436,14 +223,38 @@
                         educational content in 360° for a more engaging and interactive learning environment.</p>
                 </div>
             </div>
+                        
+            <section class="slide5-section" id="slide5-section1">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Educational Virtual Tours</h1>
+                        <p>Enhance learning experiences with OKOMO360’s educational virtual tours. Whether you are a student, educator, or institution, our immersive platform brings history, science, art, and culture to life through interactive, 360-degree virtual tours. Explore museums, historical landmarks, and scientific sites, or take part in immersive educational simulations. With our technology, you can create rich, engaging learning experiences that make education more accessible and fun, bridging the gap between theory and real-world exploration.</p>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-profile">
+                            <img src="../img/service/educational_virtual_tours.webp" alt="Educational Virtual Tours">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="slide5-section" id="slide5-section2">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Why Educational Virtual Tours?</h1>
+                        <p>Educational virtual tours provide an innovative way to enhance learning by making it more engaging and interactive. Students can explore various topics in depth, visit locations that would otherwise be inaccessible, and participate in hands-on learning experiences that stimulate creativity and curiosity. Virtual tours break down geographical and financial barriers, offering equal educational opportunities for everyone, regardless of location. They foster global understanding, promote cultural exchange, and help make complex subjects easier to understand by presenting them in a visual, immersive format.</p>
+                    </div>
+                </div>
+            </section>
+            
+
             <button class="read-more scroll">Read More</button>
             <button class="close scroll">Close</button>
         </div>
 
         <div class="slide" id="slide6">
             <div class="slide-detail">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                <div class="slide-theme"></div>
             </div>
             <div class="slide-profile">
                 <img src="../img/service/extreme-sport.png" alt="Extreme Sports">
@@ -455,14 +266,37 @@
                         the action.</p>
                 </div>
             </div>
+                        
+            <section class="slide6-section" id="slide6-section1">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Extreme Sports in VR</h1>
+                        <p>Experience the thrill of extreme sports like never before with OKOMO360's immersive VR sports experiences. From skydiving and bungee jumping to snowboarding and rock climbing, our platform allows you to engage in heart-racing adventures without leaving the ground. With cutting-edge virtual reality technology, you can feel the adrenaline rush as if you were actually participating in these extreme sports, all from the safety and comfort of your home. Whether you're seeking the rush of speed or the challenge of mastering new skills, our VR extreme sports experiences provide a safe, thrilling, and unforgettable journey.</p>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-profile">
+                            <img src="../img/service/vr_extreme_sports.webp" alt="VR Extreme Sports">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="slide6-section" id="slide6-section2">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Why VR Extreme Sports?</h1>
+                        <p>VR extreme sports provide a unique, immersive experience that allows you to explore a wide variety of adrenaline-pumping activities without the physical risks or need for special equipment. These experiences offer individuals an opportunity to try out extreme sports that may be inaccessible due to geographical, financial, or physical constraints. Whether you're an adrenaline junkie looking to experience a new sport or someone who enjoys exploring the boundaries of virtual reality, VR extreme sports offer a safe, exciting, and immersive way to push your limits.</p>
+                    </div>
+                </div>
+            </section>
+            
             <button class="read-more scroll">Read More</button>
             <button class="close scroll">Close</button>
         </div>
 
         <div class="slide" id="slide7">
             <div class="slide-detail">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                <div class="slide-theme"></div>
             </div>
             <div class="slide-profile">
                 <img src="../img/service/real-estate.png" alt="Real Estate">
@@ -474,14 +308,37 @@
                         walkthroughs.</p>
                 </div>
             </div>
+                        
+            <section class="slide7-section" id="slide7-section1">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Virtual Real Estate Tours</h1>
+                        <p>Explore properties from anywhere in the world with OKOMO360’s virtual real estate tours. Our platform offers fully immersive 360-degree views of properties, allowing you to explore every room, corner, and detail without having to visit in person. Whether you’re looking to buy a home, rent an apartment, or invest in commercial real estate, our virtual tours give you the freedom to walk through properties and make informed decisions. With high-definition visuals and interactive features, you can experience a property as if you were physically there, from the comfort of your home.</p>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-profile">
+                            <img src="../img/service/real_estate_virtual_tour.webp" alt="Real Estate Virtual Tour">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="slide7-section" id="slide7-section2">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Why Virtual Real Estate Tours?</h1>
+                        <p>Virtual real estate tours provide a convenient and efficient way to explore properties without the need for physical visits. They save time and money by enabling prospective buyers and renters to narrow down their options from anywhere in the world. Virtual tours also enhance the decision-making process, allowing users to get a more accurate sense of space and layout. Whether you're selling or buying, virtual tours can be an essential tool for real estate professionals to market properties in a more engaging and accessible way, all while offering a more sustainable and eco-friendly alternative to traditional property visits.</p>
+                    </div>
+                </div>
+            </section>
+            
             <button class="read-more scroll">Read More</button>
             <button class="close scroll">Close</button>
         </div>
 
         <div class="slide" id="slide8">
             <div class="slide-detail">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                <div class="slide-theme"></div>
             </div>
             <div class="slide-profile">
                 <img src="../img/service/vr-games.avif" alt="VR Games">
@@ -492,6 +349,30 @@
                         interactive gaming environment that transports you into dynamic, action-packed worlds.</p>
                 </div>
             </div>
+                        
+            <section class="slide8-section" id="slide8-section1">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Immersive VR Gaming</h1>
+                        <p>Step into new worlds and experience gaming like never before with OKOMO360’s immersive VR gaming platform. From action-packed adventures to mind-bending puzzles, our VR games offer an unparalleled level of interactivity and realism. Engage with lifelike characters, explore intricate environments, and complete challenges in ways that traditional gaming simply can’t offer. With our cutting-edge VR technology, your gaming experience will feel incredibly real, providing you with endless hours of entertainment and excitement.</p>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-profile">
+                            <img src="../img/service/vr_gaming_experience.webp" alt="VR Gaming Experience">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="slide8-section" id="slide8-section2">
+                <div class="content">
+                    <div class="content-box">
+                        <h1>Why VR Games?</h1>
+                        <p>VR games provide an immersive, interactive experience that transports you directly into the action. With virtual reality, players can interact with the game environment, make decisions, and experience challenges in a fully engaging way. These games open up a new world of possibilities by incorporating physical movements and spatial awareness into gameplay, enhancing immersion. VR gaming also fosters social experiences with multiplayer options, allowing you to connect and compete with friends or other players globally. Whether you're a casual gamer or a seasoned enthusiast, VR gaming takes your gaming to the next level.</p>
+                    </div>
+                </div>
+            </section>
+            
             <button class="read-more scroll">Read More</button>
             <button class="close scroll">Close</button>
         </div>
@@ -513,16 +394,47 @@
         </div>
     </div>
 
+    <!-------------Footer Section------------->
+    <footer>
+        <div class="container">
+            <div class="left">
+                <div id="logo"><img src="../img/logo.png" alt=""></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
+                <div id="left">© 2024 - All Rights Reserved.</div>
+                <div id="contact">
+                    <p>help@okomo360.com </p>
+                    <p> +91 81999 69966 </p>
+                </div>
+            </div>
+            <div class="footer-details">
+                <div class="column" id="column-1">
+                    <div id="details-heading"><a href="">Company</a></div>
+                    <div id="details-link"><a href="">Terms & Conditions</a></div>
+                    <div id="details-link"><a href="">Privacy Policy</a></div>
+                    <div id="details-link"><a href="">Contact Us</a></div>
+                </div>
+                <div class="column" id="column-2">
+                    <div id="details-heading"><a href="">Social</a></div>
+                    <div id="details-link"><a href="">Facebook</a></div>
+                    <div id="details-link"><a href="">Youtube</a></div>
+                    <div id="details-link"><a href="">Instagram</a></div>
+                    <div id="details-link"><a href="">Twitter</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
 
     <script src="../js/global.js"></script>
     <script src="../js/reloadTransition.js"></script>
-
-
     <script>
-        gsap.registerPlugin(ScrollToPlugin);
+        // Service Page JS
+        (gsap.registerPlugin(ScrollToPlugin))
+        console.log(document.body.scrollHeight);
+
 
         let slideIndex = 1;
         showSlides(slideIndex);
@@ -559,15 +471,26 @@
         const closeButtons = document.querySelectorAll(".close");
         const dots = document.querySelector(".dots");
         const controls = document.querySelectorAll(".control");
+        const body = document.body
 
         moreButtons.forEach((moreBtn, index) => {
             moreBtn.addEventListener("click", () => {
+                let closeBtn = closeButtons[index]
+                document.body.style.overflow = 'auto';
+                dots.style.display = "none";
+                controls.forEach(control => control.style.display = "none");
 
-                moreBtn.style.display = "none";
-                closeButtons[index].style.display = "block";
                 let tl = gsap.timeline();
+                tl.to(moreBtn, {
+                    display: "none",
+                    duration: 0.25
+                })
+                tl.to(closeBtn, {
+                    display: "block",
+                    duration: 0.25
+                })
                 tl.to(".slide-detail", {
-                    duration: 1,
+                    duration: 0.5,
                     ease: "power2.inOut",
                     left: 0,
                     opacity: 1,
@@ -577,32 +500,33 @@
                     ease: "power2.inOut",
                     height: "16rem"
                 })
-                document.body.style.overflow = 'auto';
-                dots.style.display = "none";
-                controls.forEach(control => control.style.display = "none");
-
-                tl.to(window, {
-                    duration: 1.5,
+                tl.to(body, {
+                    duration: 1,
                     ease: "power2.inOut",
-                    scrollTo: { y: 1000, autoKill: false },
+                    scrollTo: { y: 800 },
                 });
+
             });
         });
 
         closeButtons.forEach((closeBtn, index) => {
             closeBtn.addEventListener("click", () => {
+                let moreBtn = moreButtons[index]
                 let tl = gsap.timeline();
-                tl.to(window, {
+                tl.to(body, {
                     duration: 1,
                     ease: "power2.inOut",
-                    scrollTo: { y: 0, autoKill: false },
+                    scrollTo: { y: 0 },
                 }).call(() => {
                     document.body.style.overflow = 'hidden';
                 });
-                tl.to(".slide-theme", {
-                    duration: 0.5,
-                    ease: "power2.inOut",
-                    height: "0rem"
+                tl.to(closeBtn, {
+                    display: "none",
+                    duration: 0.1
+                })
+                tl.to(moreBtn, {
+                    display: "block",
+                    duration: 0.1
                 })
                 tl.to(".slide-detail", {
                     duration: 1,
@@ -610,18 +534,24 @@
                     left: "-100%",
                     opacity: 0,
                 });
+                tl.to(".slide-theme", {
+                    duration: 0.5,
+                    ease: "power2.inOut",
+                    height: "0rem"
+                })
+
 
 
 
                 dots.style.display = "block";
                 controls.forEach(control => control.style.display = "block");
 
-                closeBtn.style.display = "none";
-                moreButtons[index].style.display = "block";
+
             });
         });
 
     </script>
+
 </body>
 
 </html>

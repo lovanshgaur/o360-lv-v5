@@ -61,3 +61,5 @@ left.addEventListener('mouseleave', () => { hoverOff(left, right)})
 
 right.addEventListener('mouseenter', () => { hover(right, left) })
 right.addEventListener('mouseleave', () => { hoverOff(right, left) })
+
+
