@@ -666,6 +666,7 @@
         closeButtons.forEach((closeBtn, index) => {
             closeBtn.addEventListener("click", () => {
                 let moreBtn = moreButtons[index]
+                disableEvents = false;
                 let tl = gsap.timeline();
                 tl.to(body, {
                     duration: 1,
