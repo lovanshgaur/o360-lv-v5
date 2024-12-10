@@ -647,7 +647,7 @@
                     height: "16rem"
                 })
                 tl.to(nav, {
-                    backgroundColor: "black",
+                    backgroundColor: "rgba(0, 0, 0, 0.2)",
                     duration: 0.1
                 })
                 tl.to(body, {
@@ -671,10 +671,20 @@
                 }).call(() => {
                     document.body.style.overflow = 'hidden';
                 });
-                tl.to(nav, {
-                    backgroundColor: "transparent",
-                    duration: 0.1
-                })
+                if (window.innerWidth < 768) {
+                    tl.to(nav, {
+                        backgroundColor: "transparent",
+                        duration: 0.1
+                    })
+                }
+                else{
+                    tl.to(nav, {
+                        backgroundColor: "rgba(0,0,0,0.2)",
+                        duration: 0.1
+                    })
+                    
+                }
+
                 tl.to(closeBtn, {
                     display: "none",
                     duration: 0.1
